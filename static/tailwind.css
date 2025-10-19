@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom style */
+body {
+  background-color: #f9fafb;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.stButton > button {
+  background-color: #2563eb !important;
+  color: white !important;
+  border-radius: 0.75rem !important;
+  padding: 0.6rem 1.2rem !important;
+  font-size: 1.1rem !important;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+  background-color: #1d4ed8 !important;
+  transform: scale(1.05);
+}
+
+.stFileUploader > div > div > button {
+  background-color: #60a5fa !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+}
+
+.stSpinner > div {
+  color: #2563eb !important;
+}
