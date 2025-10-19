@@ -1,57 +1,4 @@
-# import streamlit as st
-# import tensorflow as tf
-# from tensorflow.keras.models import load_model
-# from tensorflow.keras.preprocessing import image
-# import numpy as np
-# from PIL import Image
-#
-# # ⚙️ HARUS di sini (paling awal, sebelum Streamlit UI lainnya)
-# st.set_page_config(page_title="CIFAR-10 Classifier", page_icon="🧠", layout="centered")
-#
-# # ===============================================================
-# # 1️⃣ LOAD MODEL
-# # ===============================================================
-# MODEL_PATH = "model/model_cifar10_optimized.h5"
-#
-# @st.cache_resource
-# def load_cifar10_model():
-#     return load_model(MODEL_PATH)
-#
-# model = load_cifar10_model()
-#
-# # ===============================================================
-# # 2️⃣ LABEL KELAS CIFAR-10
-# # ===============================================================
-# class_names = [
-#     "Airplane", "Automobile", "Bird", "Cat", "Deer",
-#     "Dog", "Frog", "Horse", "Ship", "Truck"
-# ]
-#
-# # ===============================================================
-# # 3️. STREAMLIT UI
-# # ===============================================================
-# st.title("🧠 CIFAR-10 Image Classifier")
-# st.markdown("Upload gambar dan lihat hasil prediksi model CNN.")
-#
-# uploaded_file = st.file_uploader("📁 Upload gambar (.jpg, .png)", type=["jpg", "jpeg", "png"])
-#
-# if uploaded_file is not None:
-#     img = Image.open(uploaded_file).convert("RGB")
-#     st.image(img, caption="Gambar diupload", use_column_width=True)
-#
-#     img_resized = img.resize((32, 32))
-#     img_array = image.img_to_array(img_resized)
-#     img_array = np.expand_dims(img_array, axis=0) / 255.0
-#
-#     predictions = model.predict(img_array)
-#     class_idx = np.argmax(predictions[0])
-#     confidence = np.max(predictions[0]) * 100
-#
-#     st.subheader(f"🎯 Prediksi: **{class_names[class_idx]}**")
-#     st.write(f"📊 Tingkat keyakinan: **{confidence:.2f}%**")
-#
-# else:
-#     st.info("Silakan upload gambar untuk diklasifikasikan.")
+
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -59,11 +6,11 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 
-# ⚙️ HARUS di sini (paling awal)
+# HARUS di sini (paling awal)
 st.set_page_config(page_title="CIFAR-10 Classifier", page_icon="🧠", layout="wide")
 
 # ===============================================================
-# 1️⃣ LOAD MODEL
+# 1. LOAD MODEL
 # ===============================================================
 MODEL_PATH = "model/model_cifar10_optimized.h5"
 
@@ -74,7 +21,7 @@ def load_cifar10_model():
 model = load_cifar10_model()
 
 # ===============================================================
-# 2️⃣ LABEL KELAS CIFAR-10
+# 2️. LABEL KELAS CIFAR-10
 # ===============================================================
 class_names = [
     "Airplane", "Automobile", "Bird", "Cat", "Deer",
@@ -82,7 +29,7 @@ class_names = [
 ]
 
 # ===============================================================
-# 3️⃣ STREAMLIT UI
+# 3️. STREAMLIT UI
 # ===============================================================
 st.title("🧠 CIFAR-10 Image Classifier")
 st.markdown("Upload **satu atau beberapa gambar** untuk diklasifikasikan oleh model CNN.")
@@ -95,7 +42,7 @@ uploaded_files = st.file_uploader(
 )
 
 # ===============================================================
-# 4️⃣ PREDIKSI DENGAN PROGRESS BAR DAN GRID
+# 4️. PREDIKSI DENGAN PROGRESS BAR DAN GRID
 # ===============================================================
 if uploaded_files:
     num_files = len(uploaded_files)
